@@ -7,8 +7,8 @@ let UserSchema = new Schema(
         first_name: {type: String, required: true, maxLength: 100},
         last_name: {type: String, required: true, maxLength: 100},
         username: {type: String, required: true, maxLength: 100},
-        password: {type:String, required: true, maxLength: 100},
-        statusMember: {type: Boolean, required: true},
+        password: {type:String, required: true},
+        statusMember: {type: Boolean, default: false},
         messages: [{type: Schema.Types.ObjectId, ref: 'Message'}]
     }
 );

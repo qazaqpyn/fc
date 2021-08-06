@@ -2,4 +2,34 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #{title} 
+
+  if user 
+    p Welcome back #{user.first_name}
+    p you are here
+
+    a(href="/log-out") Log Out
+
+    if !user.statusMember
+      p you are not a member of fight club
+
+      h3  Join club 
+
+      form(method="POST" action='/join-club') 
+        div.form-group 
+          label(for='passcode') Passcode: 
+          input#passcode.form-control(type='password' placeholder='passcode...' name='passcode')
+          input(type='hidden' name='username' value=user.username)
+        button.btn.btn-primary(type='submit') Join
+
+    else 
+      p You are the member of club 
+
+      a(href="/write-message") write message 
+      
+
+  else 
+    p You need to sign in to system 
+
+    a(href="/sign-in")  Sign In
+
