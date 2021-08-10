@@ -7,6 +7,7 @@ let bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var messageRouter = require('./routes/message');
 
 
 var app = express();
@@ -69,8 +70,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//middleware to use currentUser
+app.use(function(req,res,next) {
+  app.locals.userCurrent = req.user;
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', messageRouter);
 
 
 // catch 404 and forward to error handler

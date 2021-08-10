@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title} 
+  a(href="/catalog/messages") Get List of messages
 
   if user 
     p Welcome back #{user.first_name}
@@ -25,7 +24,7 @@ block content
     else 
       p You are the member of club 
 
-      a(href="/write-message") write message 
+      a(href="/catalog/message/create") write message 
       
 
   else 

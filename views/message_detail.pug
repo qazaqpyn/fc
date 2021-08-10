@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+
+
+    h2= title 
+
+    p #[strong Author:]
+        if(currentUser === undefined)
+            p ***
+        else if(currentUser.statusMember) 
+            p #{message.user.first_name} #{message.user.last_name}
+        else 
+            p ***
+            
+
+    p #[strong text:]  #{message.text} 
+
+    p #[strong time: ] #{message.timestamp}
+
+
+    if(currentUser!==undefined && currentUser.isAdmin)
+        form(action='/catalog'+message.url+'/delete' method='POST')
+            button(type='submit') Delete 

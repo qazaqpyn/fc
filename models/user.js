@@ -9,7 +9,7 @@ let UserSchema = new Schema(
         username: {type: String, required: true, maxLength: 100},
         password: {type:String, required: true},
         statusMember: {type: Boolean, default: false},
-        messages: [{type: Schema.Types.ObjectId, ref: 'Message'}]
+        isAdmin: {type: Boolean, default: false}
     }
 );
 

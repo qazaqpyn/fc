@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+
+    h3= title 
+
+    if errors 
+        ul 
+            for error in errors 
+                li!= error.msg
+
+    form(method='POST' action='')
+        div.form-group 
+            label(for='title') Title: 
+            input#title.form-control(type='text' placeholder='title...' name='title' required=true)
+        div.form-group 
+            p Author: #{user.first_name} #{user.last_name} 
+        div.form-group 
+            label(for='text') Text: 
+            input(type='textarea' placeholder='text...' name='text' required='true')
+        button.btn.btn-primary(type='submit') Submit 
+
+    

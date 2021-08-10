@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+
+    h2= title 
+
+    ul 
+        each message in message_list 
+            li 
+                a(href="/catalog"+message.url) #{message.title}
+                if(currentUser === undefined)
+                    p Author: ***
+                else if(currentUser.statusMember) 
+                    p Author: #{message.user.first_name} #{message.user.last_name}
+                else 
+                    p Author: ***
+                     
+                p #{message.text}
+
+        else 
+            li There are no messages
